@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文学书苑</title>
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #e86a33;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 3px solid #d65a26;
+        }
+        .header-container {
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .logo {
+            float: left;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        .logo span {
+            color: #ffd166;
+        }
+        .img{
+            width: 30px; 
+            height: 30px;  
+            border: 3px  #e86a33;
+        }
+        nav {
+            float: right;
+        }
+        nav ul {
+            list-style: none;
+        }
+        nav ul li {
+            float: left;
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        nav ul li a:hover {
+            background-color: #d65a26;
+            cursor: pointer;
+        }
+        .main-container {
+            width: 90%;
+            margin: 20px auto;
+            overflow: hidden; 
+        }
+        .left-sidebar {
+            width: 20%;
+            float: left;
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-right: 1%;
+        }
+        .category-title {
+            font-size: 18px;
+            color: #e86a33;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f2c94c;
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-list li {
+            margin-bottom: 10px;
+            position: relative; 
+            left: 0;
+            transition: left 0.3s;
+        }
+        .category-list li:hover {
+            left: 5px;
+        }
+        .category-list li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 3px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .category-list li a:hover {
+            background-color: #fff3cd;
+            color: #e86a33;
+            cursor: pointer;
+        }
+        .middle-content {
+            width: 56%;
+            float: left;
+            margin: 0 1.5%;
+        }
+        .section {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f2c94c;
+        }
+        .hot-books {
+            overflow: hidden;
+        }
+        .book-item {
+            width: 30%;
+            float: left;
+            margin-right: 5%;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 10px;
+            transition: transform 0.3s;
+        }
+        .book-item:nth-child(3n) {
+            margin-right: 0;
+        }
+        .book-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .book-img {
+            width: 100%;
+            height: 180px;
+            background-color: #f5f5f5;
+            margin-bottom: 10px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .book-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .book-price {
+            color: #e86a33;
+            font-weight: bold;
+        }
+        .new-books table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .new-books th, .new-books td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .new-books th {
+            background-color: #f8f5f0;
+            color: #666;
+        }
+        .new-books tr:hover {
+            background-color: #fff9f0;
+        }
+        .right-sidebar {
+            width: 15%;
+            float: right;
+            margin-left: 1%;
+        }
+        .promotion {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .promotion-title {
+            font-size: 18px;
+            color: #e86a33;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .promotion-img {
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .promotion-img img {
+            width: 100%;
+            display: block;
+        }
+        .promotion-info {
+            text-align: center;
+        }
+        .promotion-price {
+            color: #e86a33;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .promotion-btn {
+            display: inline-block;
+            background-color: #e86a33;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .promotion-btn:hover {
+            background-color: #d65a26;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+            clear: both;
+        }
+        
+        .footer-container {
+            width: 90%;
+            margin: 0 auto;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <span>图书大全</span>
+                </div>
+                <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">图书分类</a></li>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">新书上市</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main-container">
+            <div class="left-sidebar">
+                <h3 class="category-title">图书分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">文学小说</a></li>
+                    <li><a href="#">历史传记</a></li>
+                    <li><a href="#">哲学宗教</a></li>
+                    <li><a href="#">社会科学</a></li>
+                    <li><a href="#">政治军事</a></li>
+                    <li><a href="#">法律</a></li>
+                    <li><a href="#">经济管理</a></li>
+                    <li><a href="#">金融投资</a></li>
+                    <li><a href="#">生活休闲</a></li>
+                    <li><a href="#">艺术摄影</a></li>
+                    <li><a href="#">科技科普</a></li>
+                    <li><a href="#">计算机</a></li>    
+                </ul>
+            </div>
+            <div class="middle-content">
+                 <div class="section hot-books">
+                <h3 class="section-title">热门推荐</h3>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book1/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">人类简史</div>
+                    <div class="book-author">尤瓦尔·赫拉利</div>
+                    <div class="book-price">¥68.00</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book2/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">解忧杂货店</div>
+                    <div class="book-author">东野圭吾</div>
+                    <div class="book-price">¥45.00</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book3/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">三体</div>
+                    <div class="book-author">刘慈欣</div>
+                    <div class="book-price">¥58.00</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book4/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">活着</div>
+                    <div class="book-author">余华</div>
+                    <div class="book-price">¥32.00</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book5/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">追风筝的人</div>
+                    <div class="book-author">卡勒德·胡赛尼</div>
+                    <div class="book-price">¥39.50</div>
+                </div>
+                <div class="book-item">
+                    <div class="book-img">
+                        <img src="https://picsum.photos/seed/book6/300/400" alt="图书封面">
+                    </div>
+                    <div class="book-title">百年孤独</div>
+                    <div class="book-author">加西亚·马尔克斯</div>
+                    <div class="book-price">¥55.00</div>
+                </div>
+            </div>
+            
+            <!-- 新书上市（Table布局） -->
+            <div class="section new-books">
+                <h3 class="section-title">新书上市</h3>
+                <table>
+                    <tr>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>出版社</th>
+                        <th>价格</th>
+                    </tr>
+                    <tr>
+                        <td>秋分之夜</td>
+                        <td>林清玄</td>
+                        <td>北京联合出版公司</td>
+                        <td>¥42.00</td>
+                    </tr>
+                    <tr>
+                        <td>时间的秩序</td>
+                        <td>卡洛·罗韦利</td>
+                        <td>湖南科学技术出版社</td>
+                        <td>¥49.00</td>
+                    </tr>
+                    <tr>
+                        <td>置身事内</td>
+                        <td>兰小欢</td>
+                        <td>上海人民出版社</td>
+                        <td>¥59.00</td>
+                    </tr>
+                    <tr>
+                        <td>夜晚的潜水艇</td>
+                        <td>陈春成</td>
+                        <td>上海三联书店</td>
+                        <td>¥52.00</td>
+                    </tr>
+                    <tr>
+                        <td>云边有个小卖部</td>
+                        <td>张嘉佳</td>
+                        <td>湖南文艺出版社</td>
+                        <td>¥42.00</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+            <div class="right-sidebar">
+            <div class="promotion">
+                <h3 class="promotion-title">秋分特惠</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo1/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>精选图书</p>
+                    <p>限时折扣</p>
+                    <div class="promotion-price">5折起</div>
+                    <a href="#" class="promotion-btn">立即查看</a>
+                </div>
+            </div>
+            
+            <div class="promotion">
+                <h3 class="promotion-title">会员专享</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo2/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>新书抢先读</p>
+                    <p>会员8折优惠</p>
+                    <a href="#" class="promotion-btn">开通会员</a>
+                </div>
+            </div>
+            
+            <div class="promotion">
+                <h3 class="promotion-title">满减活动</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo3/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>满100减30</p>
+                    <p>满200减80</p>
+                    <a href="#" class="promotion-btn">了解详情</a>
+                </div>
+            </div>
+        </div>
+        </div>
+         <footer>
+        <div class="footer-container">
+            <p>文学书苑&copy; 2025 版权所有</p>
+            <p>联系电话：123-456-7890 | 邮箱：nichousha@chounizadi.com</p>
+        </div>
+    </footer>
+    </body>
+    </html>
