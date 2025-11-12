@@ -1,4 +1,4 @@
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -189,7 +189,7 @@
             list-style: none;
         }
         .category-list li {
-            height: 73px;
+            height: 30px;
             margin-bottom: 10px;
             position: relative; 
             left: 0;

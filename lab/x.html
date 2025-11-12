@@ -3,670 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>数字展销平台首页—丰富</title>
+    <title>数字图书展销平台-迭代2</title>
     <style>
-      /* 全局样式重置 */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Microsoft YaHei", sans-serif;
-    background-color: #f9f5f0;
-    color: #333;
-    line-height: 1.6;
-    padding-top: 80px; /* 为固定导航栏预留空间 */
-}
-
-/* 固定导航栏（固定定位 + z-index） */
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #e86a33;
-    padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    border-bottom: 3px solid #d65a26;
-    z-index: 1000;
-}
-
-.header-container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 5px 10px;
-}
-
-.logo span {
-    color: #ffd166;
-}
-
-.main-nav {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav li {
-    margin-left: 30px;
-    position: relative; /* 相对定位，作为下拉菜单的父容器 */
-}
-
-.main-nav li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-}
-
-.main-nav li a:hover {
-    background-color: #d65a26;
-}
-
-/* 下拉菜单（绝对定位 + display控制显示隐藏） */
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #e86a33;
-    list-style: none;
-    width: 150px;
-    display: none; /* 初始隐藏 */
-    z-index: 1001;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block; /*  hover 时显示 */
-}
-
-.dropdown-menu li {
-    margin: 0;
-    padding: 0;
-}
-
-.dropdown-menu li a {
-    display: block;
-    padding: 8px 10px;
-    border-radius: 0;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #d65a26;
-}
-
-/* 悬浮购物车（固定定位） */
-.cart-fixed {
-    position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 1000;
-}
-
-.cart-icon {
-    background-color: #d65a26;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 50%;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-}
-
-.cart-count {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 20px;
-    font-size: 12px;
-}
-
-/* 返回顶部按钮（固定定位 + opacity过渡） */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #e86a33;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 50px;
-    text-decoration: none;
-    opacity: 0; /* 初始透明 */
-    transition: opacity 0.3s;
-    z-index: 999;
-}
-
-.back-to-top.visible {
-    opacity: 1; /* 滚动后显示 */
-}
-
-/* 轮播图（相对定位 + 绝对定位指示器） */
-.banner {
-    position: relative; /* 作为指示器的父容器 */
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.banner-wrapper {
-    display: flex;
-    transition: transform 0.5s;
-}
-
-.banner-wrapper img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-}
-
-.banner-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
-
-.indicator {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.5); /* rgba半透明 */
-    cursor: pointer;
-}
-
-.indicator.active {
-    background-color: #e86a33;
-}
-
-/* 三栏布局 */
-.content-wrapper {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    gap: 2%;
-}
-
-.left-sidebar {
-    width: 20%;
-    background-color: white;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
-.category-title {
-    font-size: 18px;
-    color: #e86a33;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f2c94c;
-}
-
-.category-list {
-    list-style: none;
-}
-
-.category-list li {
-    margin-bottom: 10px;
-    position: relative; /* 相对定位 */
-    left: 0;
-    transition: left 0.3s;
-}
-
-.category-list li:hover {
-    left: 5px;
-}
-
-.category-list li a {
-    color: #333;
-    text-decoration: none;
-    display: block;
-    padding: 8px 10px;
-    border-radius: 3px;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.category-list li a:hover {
-    background-color: #fff3cd;
-    color: #e86a33;
-}
-
-.middle-content {
-    width: 56%;
-}
-
-.section {
-    background-color: white;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-}
-
-.section-title {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #f2c94c;
-}
-
-.hot-books {
-            overflow: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
         }
-        .book-item {
-            width: 30%;
-            float: left;
-            margin-right: 5%;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 1px solid #eee;
-            border-radius: 5px;
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+        .nav-right a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: grid;
+            gap: 15px;
+        }
+        .form-group {
+            display: grid;
+            gap: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="email"], 
+        input[type="number"], select, textarea {
+            width: 100%;
             padding: 10px;
-            transition: transform 0.3s;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
-        .book-item:nth-child(3n) {
-            margin-right: 0;
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
         }
-        .book-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        input[type="file"] {
+            padding: 8px 0;
         }
-        .book-img {
-            width: 100%;
-            height: 180px;
-            background-color: #f5f5f5;
-            margin-bottom: 10px;
-            border-radius: 3px;
-            overflow: hidden;
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
         }
-        .book-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        button:hover {
+            background-color: #555;
         }
-.book-img:hover img {
-    transform: scale(1.05);
-}
-.book-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.7); 
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; 
-    transition: opacity 0.3s;
-}
-
-.book-img:hover .book-overlay {
-    opacity: 1;
-}
-
-.book-detail {
-    text-align: left;
-    padding: 20px;
-}
-
-.book-detail h4 {
-    margin-bottom: 18px;
-}
-
-.book-detail p {
-    margin-bottom: 8px;
-}
-
-.add-to-cart {
-    background-color: #e86a33;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.add-to-cart:hover {
-    background-color: #d65a26;
-}
-
-.book-title {
-    font-weight: bold;
-}
-
-.new-books table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.new-books th, .new-books td {
-    padding: 12px 10px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-.new-books th {
-    background-color: #f8f5f0;
-    color: #666;
-}
-
-.new-books tr:hover {
-    background-color: #fff9f0;
-}
-
-.right-sidebar {
-    width: 20%;
-}
-
-.promotion {
-    background-color: white;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #eee;
-}
-
-.promotion-title {
-    font-size: 18px;
-    color: #e86a33;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.promotion-img {
-    width: 100%;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.promotion-img img {
-    width: 100%;
-    display: block;
-}
-
-.promotion-info {
-    text-align: center;
-}
-
-.promotion-price {
-    color: #e86a33;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.promotion-btn {
-    display: inline-block;
-    background-color: #e86a33;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    text-decoration: none;
-    margin-top: 10px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-}
-
-.promotion-btn:hover {
-    background-color: #d65a26;
-}
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
-    clear: both;
-}
-
-.footer-container {
-    width: 90%;
-    margin: 0 auto;
-}
-.loading-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    opacity: 1;
-    transition: opacity 0.5s;
-}
-.loading-mask.hidden {
-    opacity: 0;
-    pointer-events: none; 
-}
-.loading-text {
-    color: white;
-    font-size: 24px;
-}
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        fieldset {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        legend {
+            font-weight: bold;
+            padding: 0 5px;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #333;
+            box-shadow: 0 0 5px rgba(51, 51, 51, 0.3);
+        }
+        ::placeholder {
+            color: #999;
+        }
     </style>
 </head>
 <body>
-    <header class="fixed-header">
-        <div class="header-container">
-            <div class="logo">
-                <span>文学书苑</span>
-            </div>
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="#">首页</a></li>
-                    <li class="dropdown">
-                        <a href="#">图书分类</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">文学小说</a></li>
-                    <li><a href="#">历史传记</a></li>
-                    <li><a href="#">哲学宗教</a></li>
-                    <li><a href="#">社会科学</a></li>
-                    <li><a href="#">政治军事</a></li>
-                    <li><a href="#">法律</a></li>
-                    <li><a href="#">经济管理</a></li>
-                    <li><a href="#">金融投资</a></li>
-                    <li><a href="#">生活休闲</a></li>
-                    <li><a href="#">艺术摄影</a></li>
-                    <li><a href="#">科技科普</a></li>
-                    <li><a href="#">计算机</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">热门推荐</a></li>
-                    <li><a href="#">新书上市</a></li>
-                    <li><a href="#">关于我们</a></li>
-                </ul>
-            </nav>
-            <div class="cart-fixed">
-                <a href="#" class="cart-icon">购物车 <span class="cart-count">3</span></a>
-            </div>
+    <header>
+        <div class="logo">数字图书展销平台</div>
+        <div class="nav-right">
+            <a href="#loginForm">登录/注册</a>
         </div>
     </header>
-    <a href="#" class="back-to-top">↑</a>
-    <div class="main-container">
-        <div class="banner">
-            <div class="banner-wrapper">
-                <img src="../image/6.png" alt="1">
+
+    <div class="form-container">
+        <h2>图书推荐订阅表单</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" name="username" placeholder="请输入用户名" required>
             </div>
-            <div class="banner-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" placeholder="请输入密码" required>
             </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="left-sidebar">
-                <h3 class="category-title">图书分类</h3>
-                <ul class="category-list">
-                    <li><a href="#">文学小说</a></li>
-                    <li><a href="#">历史传记</a></li>
-                    <li><a href="#">哲学宗教</a></li>
-                    <li><a href="#">社会科学</a></li>
-                    <li><a href="#">政治军事</a></li>
-                    <li><a href="#">法律</a></li>
-                    <li><a href="#">经济管理</a></li>
-                    <li><a href="#">金融投资</a></li>
-                    <li><a href="#">生活休闲</a></li>
-                    <li><a href="#">艺术摄影</a></li>
-                    <li><a href="#">科技科普</a></li>
-                    <li><a href="#">计算机</a></li>
-                </ul>
+            <div class="form-group">
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
             </div>
-            <div class="middle-content">
-                <div class="section hot-books">
-                    <h3 class="section-title">热门推荐</h3>
-                    <div class="book-item">
-                        <div class="book-img">
-                            <img src="https://picsum.photos/seed/book1/200/300" alt="图书封面">
-                            <div class="book-overlay">
-                                <div class="book-detail">
-                                    <h4>人类简史</h4>
-                                    <p>作者：尤瓦尔·赫拉利</p>
-                                    <p>价格：¥68.00</p>
-                                    <button class="add-to-cart">加入购物车</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="book-title">人类简史</div>
-                    </div>
-                    <div class="book-item">
-                        <div class="book-img">
-                            <img src="https://picsum.photos/seed/book2/200/300" alt="图书封面">
-                            <div class="book-overlay">
-                                <div class="book-detail">
-                                    <h4>解忧杂货店</h4>
-                                    <p>作者：东野圭吾</p>
-                                    <p>价格：¥45.00</p>
-                                    <button class="add-to-cart">加入购物车</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="book-title">解忧杂货店</div>
-                    </div>
-                    <div class="book-item">
-                        <div class="book-img">
-                            <img src="https://picsum.photos/seed/book3/200/300" alt="图书封面">
-                            <div class="book-overlay">
-                                <div class="book-detail">
-                                    <h4>三体</h4>
-                                    <p>作者：刘慈欣</p>
-                                    <p>价格：¥58.00</p>
-                                    <button class="add-to-cart">加入购物车</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="book-title">三体</div>
-                    </div>
-                </div>
-                <div class="section new-books">
-                    <h3 class="section-title">新书上市</h3>
-                    <table>
-                        <tr>
-                            <th>书名</th>
-                            <th>作者</th>
-                            <th>出版社</th>
-                            <th>价格</th>
-                            <th>操作</th>
-                        </tr>
-                        <tr>
-                            <td>秋分之夜</td>
-                            <td>林清玄</td>
-                            <td>北京联合出版公司</td>
-                            <td>¥42.00</td>
-                            <td><button class="add-to-cart">加入购物车</button></td>
-                        </tr>
-                        <tr>
-                            <td>时间的秩序</td>
-                            <td>卡洛·罗韦利</td>
-                            <td>湖南科学技术出版社</td>
-                            <td>¥49.00</td>
-                            <td><button class="add-to-cart">加入购物车</button></td>
-                        </tr>
-                        <tr>
-                            <td>置身事内</td>
-                            <td>兰小欢</td>
-                            <td>上海人民出版社</td>
-                            <td>¥59.00</td>
-                            <td><button class="add-to-cart">加入购物车</button></td>
-                        </tr>
-                    </table>
-                </div>
+            <fieldset>
+                <legend>性别</legend>
+                <label><input type="radio" name="gender" value="male" checked> 男</label>
+                <label><input type="radio" name="gender" value="female"> 女</label>
+            </fieldset>
+            <fieldset>
+                <legend>图书兴趣</legend>
+                <label><input type="checkbox" name="interest" value="novel"> 小说</label>
+                <label><input type="checkbox" name="interest" value="history"> 历史</label>
+                <label><input type="checkbox" name="interest" value="science"> 科学</label>
+                <label><input type="checkbox" name="interest" value="art"> 艺术</label>
+            </fieldset>
+            <div class="form-group">
+                <label for="city">所在城市</label>
+                <select id="city" name="city">
+                    <option value="">请选择城市</option>
+                    <option value="beijing">北京</option>
+                    <option value="shanghai">上海</option>
+                    <option value="guangzhou">广州</option>
+                    <option value="shenzhen">深圳</option>
+                </select>
             </div>
-            <div class="right-sidebar">
-                <div class="promotion">
-                    <h3 class="promotion-title">秋分特惠</h3>
-                    <div class="promotion-img">
-                        <img src="https://picsum.photos/seed/promo1/300/200" alt="促销图片">
-                    </div>
-                    <div class="promotion-info">
-                        <p>精选图书</p>
-                        <p>限时折扣</p>
-                        <div class="promotion-price">5折起</div>
-                        <a href="#" class="promotion-btn">立即查看</a>
-                    </div>
-                </div>
-                <div class="promotion">
-                    <h3 class="promotion-title">会员专享</h3>
-                    <div class="promotion-img">
-                        <img src="https://picsum.photos/seed/promo2/300/200" alt="促销图片">
-                    </div>
-                    <div class="promotion-info">
-                        <p>新书抢先读</p>
-                        <p>会员8折优惠</p>
-                        <a href="#" class="promotion-btn">开通会员</a>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="bookCategory">图书分类偏好</label>
+                <select id="bookCategory" name="bookCategory" multiple size="3">
+                    <option value="literature">文学</option>
+                    <option value="technology">科技</option>
+                    <option value="education">教育</option>
+                    <option value="economy">经济</option>
+                    <option value="medicine">医学</option>
+                </select>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="comment">订阅说明</label>
+                <textarea id="comment" name="comment" placeholder="请输入您的订阅需求或建议"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="avatar">上传头像</label>
+                <input type="file" id="avatar" name="avatar">
+            </div>
+            <button type="submit">提交</button>
+            <button type="reset">重置</button>
+        </form>
     </div>
-    <footer>
-        <div class="footer-container">
-            <p>秋分数字展销平台 &copy; 2023 版权所有</p>
-            <p>联系电话：400-123-4567 | 邮箱：contact@qiufenbooks.com</p>
-        </div>
-    </footer>
-    <script>
-        window.addEventListener('scroll', function() {
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-    </script>
+
+    <div id="loginForm" class="form-container">
+        <h2>用户登录</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="loginName">用户名/邮箱</label>
+                <input type="text" id="loginName" name="loginName" placeholder="请输入用户名或邮箱" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPwd">密码</label>
+                <input type="password" id="loginPwd" name="loginPwd" placeholder="请输入密码" required>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="remember" value="1"> 记住我</label>
+            </div>
+            <button type="submit">登录</button>
+            <a href="#registerForm" style="text-decoration: none; color: #333;">注册</a>
+        </form>
+    </div>
+    <div id="registerForm" class="form-container" style="display: none;">
+        <h2>用户注册</h2>
+        <p>注册表单内容...</p>
+        <a href="#loginForm" style="text-decoration: none; color: #333;">返回登录</a>
+    </div>
 </body>
 </html>

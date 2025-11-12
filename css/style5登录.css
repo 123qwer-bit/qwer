@@ -1,0 +1,93 @@
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", sans-serif;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .pass {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        .pass li {
+            margin: 0 15px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .pass li:hover {
+            color: #000000;
+            padding-left: 5px;
+        }
+        .pass a {
+            color: #000000;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 5px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+            .pass a:hover .pass a:focus {
+            color: #000000;
+        }
+        .pass a:first-child {
+            color: #000000;
+        }
+        .line {
+            color: rgb(0, 0, 0);
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        form {
+            display: grid;
+            gap: 15px;
+        }
+        .form-group {
+            display: grid;
+            gap: 5px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="email"], 
+        input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        input[type="file"] {
+            padding: 8px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        

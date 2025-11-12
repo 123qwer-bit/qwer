@@ -1,0 +1,101 @@
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>图书推荐订阅表单</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="../css/style5book.css">
+    </head>
+    <body>
+    <div class="form-container">
+            <h2>图书推荐订阅表单</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="username" class="fa fa-user-circle">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="fa fa-code-fork">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="fa fa-certificate">邮箱</label>
+                    <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
+                </div>
+                <fieldset>
+                    <legend>性别</legend>
+                    <label><input type="radio" name="gender" value="male" checked>男</label>
+                    <label><input type="radio" name="gender" value="female">女</label>
+                </fieldset>
+                                <div class="form-group">
+                    <label for="city" class="fa fa-map">所在城市</label>
+                    <select id="city" name="city">
+                         <option value="" disabled selected>请选择省份/地区</option>
+                            <option value="hebei">河北省</option>
+                            <option value="shanxi">山西省</option>
+                            <option value="liaoning">辽宁省</option>
+                            <option value="jilin">吉林省</option>
+                            <option value="heilongjiang">黑龙江省</option>
+                            <option value="jiangsu">江苏省</option>
+                            <option value="zhejiang">浙江省</option>
+                            <option value="anhui">安徽省</option>
+                            <option value="fujian">福建省</option>
+                            <option value="jiangxi">江西省</option>
+                            <option value="shandong">山东省</option>
+                            <option value="henan">河南省</option>
+                            <option value="hubei">湖北省</option>
+                            <option value="hunan">湖南省</option>
+                            <option value="guangdong">广东省</option>
+                            <option value="hainan">海南省</option>
+                            <option value="sichuan">四川省</option>
+                            <option value="guizhou">贵州省</option>
+                            <option value="yunnan">云南省</option>
+                            <option value="shaanxi">陕西省</option>
+                            <option value="gansu">甘肃省</option>
+                            <option value="qinghai">青海省</option>
+                            <option value="taiwan">台湾省</option>
+                            <option value="neimenggu">内蒙古自治区</option>
+                            <option value="guangxi">广西壮族自治区</option>
+                            <option value="xizang">西藏自治区</option>
+                            <option value="ningxia">宁夏回族自治区</option>
+                            <option value="xinjiang">新疆维吾尔自治区</option>
+                            <option value="beijing">北京市</option>
+                            <option value="tianjin">天津市</option>
+                            <option value="shanghai">上海市</option>
+                            <option value="chongqing">重庆市</option>
+                            <option value="xianggang">香港特别行政区</option>
+                            <option value="aomen">澳门特别行政区</option>
+                    </select>
+                </div>
+                <fieldset>
+                    <legend>图书兴趣</legend>
+                    <label><input type="checkbox" name="interest" value="">小说</label>
+                    <label><input type="checkbox" name="interest" value="">历史</label>
+                    <label><input type="checkbox" name="interest" value="">科学</label>
+                    <label><input type="checkbox" name="interest" value="">艺术</label>
+                    <label><input type="checkbox" name="interest" value="">文学</label>
+                    <label><input type="checkbox" name="interest" value="">历史</label>
+                    <label><input type="checkbox" name="interest" value="">哲学</label>
+                    <label><input type="checkbox" name="interest" value="">科学</label>
+                    <label><input type="checkbox" name="interest" value="">政治</label>
+                    <label><input type="checkbox" name="interest" value="">经济</label>
+                    <label><input type="checkbox" name="interest" value="">金融</label>
+                    <label><input type="checkbox" name="interest" value="">休闲</label>
+                    <label><input type="checkbox" name="interest" value="">摄影</label>
+                    <label><input type="checkbox" name="interest" value="">科普</label>
+                    <label><input type="checkbox" name="interest" value="">社会</label>  
+                </fieldset>
+                <div class="form-group">
+                    <label for="comment" class="fa fa-pen">订阅说明</label>
+                    <textarea id="comment" name="comment" placeholder="请输入您的订阅需求或建议"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="avatar">上传头像</label>
+                    <input type="file" id="avatar" name="avatar">
+                </div>
+                <button type="submit">提交</button>
+                <button type="reset">重置</button>
+            </form>
+        </div>
+        </body>

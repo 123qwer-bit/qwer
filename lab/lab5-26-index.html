@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文学书苑</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style4.css">
+    <link rel="stylesheet" href="../css/style5.css">
     </head>
     <body>
         <header class="fixed-header">
@@ -15,11 +15,17 @@
             </div>
             <nav>
                 <ul class="main-nav">
+                    <li class="dropdown">
+                    <a href="#">我的</a>
+                    <ul class="dropdown-menu">
+                    <li><a href="lab/lab5登录.html">登录/注册</a></li>
+                    <li><a href="lab/lab5book.html">图书推荐订阅表单</a></li>
+                    </ul>
                     <li><a href="#">首页</a></li>
                     <li class="dropdown">
-                        <a href="#">图书分类</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">文学小说</a></li>
+                    <a href="#">图书分类</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">文学小说</a></li>
                     <li><a href="#">历史传记</a></li>
                     <li><a href="#">哲学宗教</a></li>
                     <li><a href="#">社会科学</a></li>
@@ -271,7 +277,6 @@
         });
         window.addEventListener('load', function() {
             const loadingMask = document.querySelector('.loading-mask');
-            loadingMask.classList.add('hidden');
         });
     </script>
     </body>
