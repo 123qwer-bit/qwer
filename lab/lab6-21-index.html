@@ -47,6 +47,14 @@
                     <li><a href="#"><i class="fas fa-fire"></i>热门推荐</a></li>
                     <li><a href="#"><i class="fas fa-star"></i>新书上市</a></li>
                     <li><a href="#"><i class="fas fa-info-circle"></i>关于我们</a></li>
+                    <li>
+  <a href="#" class="search-link">
+    <span class="search-icon">
+      <i class="fas fa-search"></i>
+    </span>
+    搜索
+  </a>
+</li>
                     <li class="dropdown">
                         <a href="#"><i class="fas fa-user"></i>我的</a>
                         <ul class="dropdown-menu">
@@ -267,11 +275,6 @@
                     </div>
                 </li>
             </ul>
-            <div class="carousel-indicators">
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-                <div class="indicator"></div>
-            </div>
         </div>
         <div class="content-wrapper">
             <div class="left-sidebar">
@@ -299,7 +302,7 @@
                     </h3>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book1/200/300" alt="图书封面">
+                            <img src="../image2/6.1.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>人类简史</h4>
@@ -313,7 +316,7 @@
                     </div>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book2/300/400" alt="图书封面">
+                            <img src="../image2/6.2.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>解忧杂货店</h4>
@@ -327,7 +330,7 @@
                     </div>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book3/200/300" alt="图书封面">
+                            <img src="../image2/6.3.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>三体</h4>
@@ -341,7 +344,7 @@
                     </div>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book4/200/300" alt="图书封面">
+                            <img src="../image2/6.4.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>活着</h4>
@@ -355,7 +358,7 @@
                     </div>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book5/200/300" alt="图书封面">
+                            <img src="../image2/6.5.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>追风筝的人</h4>
@@ -369,17 +372,45 @@
                     </div>
                     <div class="book-item">
                         <div class="book-img">
-                            <img src="https://picsum.photos/seed/book6/200/300" alt="图书封面">
+                            <img src="../image2/6.6.webp" alt="图书封面">
                             <div class="book-overlay">
                                 <div class="book-detail">
                                     <h4>百年孤独</h4>
                                     <p>作者：加西亚·马尔克斯</p>
                                     <p>价格：¥55.00</p>
                                     <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
-                                                            </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="book-title">百年孤独</div>
-                    </div>
+                </div>
+                <div class="book-item">
+                        <div class="book-img">
+                            <img src="../image2/6.7.webp" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>龙族</h4>
+                                    <p>作者：江南</p>
+                                    <p>价格：¥30.00</p>
+                                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">龙族</div>
+                </div>
+                <div class="book-item">
+                        <div class="book-img">
+                            <img src="../image2/6.8.jpg" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>球状闪电</h4>
+                                    <p>作者：刘慈欣</p>
+                                    <p>价格：¥45.00</p>
+                                    <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> 加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">球状闪电</div>
                 </div>
                 <div class="section new-books">
                     <h3 class="section-title">
@@ -482,7 +513,6 @@
     </footer>
     <script>
         const backToTop = document.querySelector('.back-to-top');
-        
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTop.classList.add('visible');
@@ -490,7 +520,6 @@
                 backToTop.classList.remove('visible');
             }
         });
-        
         backToTop.addEventListener('click', (e) => {
             e.preventDefault();
             window.scrollTo({
@@ -501,7 +530,6 @@
         const modalTriggers = document.querySelectorAll('.modal-trigger');
         const modals = document.querySelectorAll('.login-modal, .book-form-modal');
         const closeButtons = document.querySelectorAll('.close-modal');
-        
         modalTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const modalId = trigger.getAttribute('data-modal');
@@ -512,7 +540,6 @@
                 }
             });
         });
-        
         closeButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const modalId = button.getAttribute('data-target');
@@ -535,7 +562,6 @@
         const showLoginBtn = document.getElementById('showLogin');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
-        
         if (showRegisterBtn && showLoginBtn && loginForm && registerForm) {
             showRegisterBtn.addEventListener('click', () => {
                 loginForm.style.display = 'none';
@@ -550,33 +576,6 @@
         const loginFormElement = document.getElementById('loginForm');
         const registerFormElement = document.getElementById('registerForm');
         const bookSubscriptionForm = document.getElementById('bookSubscriptionForm');
-        
-        if (loginFormElement) {
-            loginFormElement.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('登录成功！欢迎回来~');
-                document.getElementById('loginModal').classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        if (registerFormElement) {
-            registerFormElement.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('注册成功！请登录~');
-                registerForm.style.display = 'none';
-                loginForm.style.display = 'block';
-            });
-        }
-        
-        if (bookSubscriptionForm) {
-            bookSubscriptionForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('订阅成功！我们会尽快为您推荐相关图书~');
-                document.getElementById('bookFormModal').classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
     </script>
 </body>
 </html>

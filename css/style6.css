@@ -1,4 +1,4 @@
-:root {
+        :root {
             --primary-color: #e86a33;
             --primary-dark: #d65a26;
             --secondary-color: #667eea;
@@ -26,7 +26,6 @@
             padding-top: 80px;
         }
 
-        /* 头部导航样式 */
         .fixed-header {
             position: fixed;
             top: 0;
@@ -152,7 +151,6 @@
             transform: none;
         }
 
-        /* 返回顶部按钮 */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -182,8 +180,6 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
         }
-
-        /* 购物车图标 */
         .cart-fixed {
             position: fixed;
             right: 30px;
@@ -231,7 +227,6 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* 主容器样式 */
         .main-container {
             width: 90%;
             max-width: 1400px;
@@ -239,7 +234,6 @@
             overflow: hidden;
         }
 
-        /* 轮播图样式 */
         #cartoon {
             width: 100%;
             height: 400px;
@@ -375,22 +369,20 @@
             width: 30px;
             border-radius: 6px;
         }
-
-        /* 左侧边栏 */
         .content-wrapper {
             display: flex;
             gap: 20px;
         }
 
         .left-sidebar {
-            width: 20%;
-            background-color: var(--white);
-            border-radius: 12px;
+            width: 15%;
+            float: left;
+            background-color: white;
+            border-radius: 5px;
             padding: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-right: 1%;
         }
-
         .left-sidebar:hover {
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
         }
@@ -408,11 +400,6 @@
         .category-title i {
             margin-right: 10px;
             animation: rotate 3s infinite linear;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         .category-list {
@@ -458,9 +445,10 @@
             transform: rotate(15deg);
         }
 
-        /* 中间内容区 */
         .middle-content {
-            flex: 1;
+            width: 60%;
+            float: left;
+            margin: 0 1.5%;
         }
 
         .section {
@@ -471,6 +459,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border-top: 4px solid var(--primary-color);
+            margin: auto;
         }
 
         .section:hover {
@@ -511,7 +500,6 @@
             text-decoration: underline;
         }
 
-        /* 热门图书 */
         .hot-books {
             display: flex;
             flex-wrap: wrap;
@@ -574,6 +562,7 @@
 
         .book-item:hover .book-img img {
             transform: scale(1.08) translateX(10px);
+            transform: translateX(50px) scale(1.5);
         }
 
         .book-overlay {
@@ -642,7 +631,6 @@
             text-overflow: ellipsis;
         }
 
-        /* 新书上市表格 */
         .new-books table {
             width: 100%;
             border-collapse: collapse;
@@ -683,9 +671,10 @@
             transform: translateX(5px);
         }
 
-        /* 右侧边栏 */
         .right-sidebar {
-            width: 250px;
+            width: 15%;
+            float: right;
+            margin-left: 1%;
         }
 
         .promotion {
@@ -790,77 +779,19 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
-        /* 页脚样式 */
         footer {
-            background: linear-gradient(135deg, #333, #1a1a1a);
-            color: rgba(255, 255, 255, 0.8);
+            background-color: #333;
+            color: white;
             text-align: center;
-            padding: 50px 0 30px;
-            margin-top: 50px;
+            padding: 20px 0;
+            margin-top: 30px;
+            clear: both;
         }
-
         .footer-container {
             width: 90%;
-            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-links a i {
-            margin-right: 8px;
-            font-size: 16px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .footer-social a {
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .footer-social a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px) rotate(15deg);
-        }
-
-        footer p {
-            margin: 10px 0;
-            font-size: 14px;
-        }
-
-        /* 登录模态框 */
         .login-modal {
             position: fixed;
             top: 0;
@@ -1121,7 +1052,6 @@
             background-color: #E6162D;
         }
 
-        /* 图书订阅表单模态框 */
         .book-form-modal {
             position: fixed;
             top: 0;
@@ -1323,7 +1253,32 @@
             cursor: pointer;
         }
 
-        /* 响应式设计 */
+        .code-group {
+            display: flex;
+            gap: 10px;
+            align-items: stretch; 
+        }
+
+        .code-group .form-control {
+            flex: 1;
+        }
+
+        .code-btn {
+            flex: 0 0 110px;
+            background-color: #f5f5f5;
+            color: #666;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            transition: var(--transition);
+            padding: 0 10px;
+        }
+
+        .code-btn:hover {
+            background-color: #eee;
+            border-color: #ccc;
+        }
+
         @media (max-width: 1200px) {
             .book-item {
                 max-width: calc(50% - 20px);
@@ -1340,14 +1295,18 @@
             }
 
             .right-sidebar {
-                display: flex;
-                gap: 20px;
+                flex-direction: row; 
                 flex-wrap: wrap;
             }
 
             .promotion {
                 flex: 1;
                 min-width: 250px;
+                height: auto; 
+            }
+
+            .promotion-img {
+                height: 140px;
             }
         }
 
@@ -1358,6 +1317,11 @@
 
             .book-item {
                 max-width: 100%;
+                height: auto; 
+            }
+
+            .book-img {
+                height: 220px;
             }
 
             #cartoon {
@@ -1374,6 +1338,15 @@
 
             .carousel-caption p {
                 font-size: 16px;
+                display: none;
+            }
+
+            .section {
+                padding: 15px;
+            }
+            .code-btn {
+                flex: 0 0 90px;
+                font-size: 12px;
             }
         }
 
@@ -1406,4 +1379,25 @@
             .section {
                 padding: 15px;
             }
+
+            .footer-links {
+                gap: 15px;
+            }
         }
+        @keyframes rotateSearch {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 图标容器样式（可选，控制图标大小和间距） */
+.search-icon i {
+  font-size: 16px; /* 图标大小 */
+  margin-right: 6px; /* 图标与文字间距 */
+  transition: transform 0.3s ease; /* 过渡平滑 */
+}
+
+/* 悬停时触发旋转 */
+.search-link:hover .search-icon i {
+  animation: rotateSearch 0.5s linear; /* 0.5s完成一圈，匀速 */
+}
+        
