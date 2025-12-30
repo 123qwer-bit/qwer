@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文学书苑</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style5.css">
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="header-container">
+            <div class="logo">
+                <span>图书大全</span>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#">首页</a></li>
+                    <li class="dropdown">
+                        <a href="#">图书分类</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">文学小说</a></li>
+                            <li><a href="#">历史传记</a></li>
+                            <li><a href="#">哲学宗教</a></li>
+                            <li><a href="#">社会科学</a></li>
+                            <li><a href="#">政治军事</a></li>
+                            <li><a href="#">经济管理</a></li>
+                            <li><a href="#">金融投资</a></li>
+                            <li><a href="#">生活休闲</a></li>
+                            <li><a href="#">艺术摄影</a></li>
+                            <li><a href="#">科技科普</a></li>
+                            <li><a href="#">计算机</a></li>    
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">筛选</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">9.9元包邮</a></li>
+                            <li><a href="#">10元-20元</a></li>
+                            <li><a href="#">20元-30元</a></li>
+                            <li><a href="#">30元-40元</a></li>
+                            <li><a href="#">40元-50元</a></li>
+                            <li><a href="#">50元-60元</a></li>
+                            <li><a href="#">60元-70元</a></li>
+                            <li><a href="#">70元-80元</a></li>
+                            <li><a href="#">80元-90元</a></li>
+                            <li><a href="#">90元以上</a></li>  
+                        </ul>
+                    </li>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">新书上市</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li class="dropdown">
+                        <a href="#">我的</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:;" class="modal-trigger" data-modal="loginModal">登录/注册</a></li>
+                            <li><a href="javascript:;" class="modal-trigger" data-modal="bookFormModal">图书推荐订阅表单</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <div class="login-header">
+                <h2>欢迎登录文学书苑</h2>
+                <button class="close-modal" data-target="loginModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="login-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">用户名/手机号</label>
+                        <input type="text" id="username" class="form-control" placeholder="请输入用户名或手机号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" id="password" class="form-control" placeholder="请输入密码" required>
+                    </div>
+                    <div class="login-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">记住我</label>
+                        </div>
+                        <a href="#" class="forgot-password">忘记密码？</a>
+                    </div>
+                    <button type="submit" class="login-btn">立即登录</button>
+                    <div class="register-link">
+                        还没有账号？<a href="javascript:;" id="showRegister">立即注册</a>
+                    </div>
+                    
+                    <div class="divider">其他登录方式</div>
+                    
+                    <div class="social-login">
+                        <button type="button" class="social-btn wechat" title="微信登录">
+                            <i class="fab fa-weixin"></i>
+                        </button>
+                        <button type="button" class="social-btn qq" title="QQ登录">
+                            <i class="fab fa-qq"></i>
+                        </button>
+                        <button type="button" class="social-btn weibo" title="微博登录">
+                            <i class="fab fa-weibo"></i>
+                        </button>
+                    </div>
+                </form>
+                <form id="registerForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="regUsername">用户名</label>
+                        <input type="text" id="regUsername" class="form-control" placeholder="请设置用户名" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">手机号</label>
+                        <input type="tel" id="regPhone" class="form-control" placeholder="请输入手机号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regCode">验证码</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="regCode" class="form-control" placeholder="请输入验证码" required>
+                            <button type="button" class="btn btn-secondary" style="flex: 0 0 110px; background-color: #f5f5f5; color: #666; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 13px;">获取验证码</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">设置密码</label>
+                        <input type="password" id="regPassword" class="form-control" placeholder="请设置6-18位密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPwd">确认密码</label>
+                        <input type="password" id="regConfirmPwd" class="form-control" placeholder="请再次输入密码" required>
+                    </div>
+                    <div class="remember-me" style="margin-bottom: 20px;">
+                        <input type="checkbox" id="agreement" required>
+                        <label for="agreement">我已阅读并同意<a href="#" style="color: #667eea; text-decoration: none;">《用户协议》</a>和<a href="#" style="color: #667eea; text-decoration: none;">《隐私政策》</a></label>
+                    </div>
+                    <button type="submit" class="login-btn">立即注册</button>
+                    <div class="register-link">
+                        已有账号？<a href="javascript:;" id="showLogin">返回登录</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="book-form-modal" id="bookFormModal">
+        <div class="book-form-container">
+            <div class="book-form-header">
+                <h2>图书推荐订阅表单</h2>
+                <button class="close-modal" data-target="bookFormModal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="book-form-body">
+                <form action="" method="post" enctype="multipart/form-data" id="bookSubscriptionForm">
+                    <div class="book-form-group">
+                        <label for="subUsername"><i class="fa fa-user-circle"></i>用户名</label>
+                        <input type="text" id="subUsername" name="username" class="book-form-control" placeholder="请输入用户名" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="subPassword"><i class="fa fa-lock"></i>密码</label>
+                        <input type="password" id="subPassword" name="password" class="book-form-control" placeholder="请输入密码" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="subEmail"><i class="fa fa-certificate"></i>邮箱</label>
+                        <input type="email" id="subEmail" name="email" class="book-form-control" placeholder="请输入邮箱" required>
+                    </div>
+                    <fieldset>
+                        <legend>性别</legend>
+                        <div class="gender-options">
+                            <label><input type="radio" name="gender" value="male" checked>男</label>
+                            <label><input type="radio" name="gender" value="female">女</label>
+                        </div>
+                    </fieldset>
+                    <div class="book-form-group">
+                        <label for="subCity"><i class="fa fa-map"></i>所在城市</label>
+                        <select id="subCity" name="city" class="book-form-control">
+                            <option value="" disabled selected>请选择省份/地区</option>
+                            <option value="hebei">河北省</option>
+                            <option value="shanxi">山西省</option>
+                            <option value="liaoning">辽宁省</option>
+                            <option value="jilin">吉林省</option>
+                            <option value="heilongjiang">黑龙江省</option>
+                            <option value="jiangsu">江苏省</option>
+                            <option value="zhejiang">浙江省</option>
+                            <option value="anhui">安徽省</option>
+                            <option value="fujian">福建省</option>
+                            <option value="jiangxi">江西省</option>
+                            <option value="shandong">山东省</option>
+                            <option value="henan">河南省</option>
+                            <option value="hubei">湖北省</option>
+                            <option value="hunan">湖南省</option>
+                            <option value="guangdong">广东省</option>
+                            <option value="hainan">海南省</option>
+                            <option value="sichuan">四川省</option>
+                            <option value="guizhou">贵州省</option>
+                            <option value="yunnan">云南省</option>
+                            <option value="shaanxi">陕西省</option>
+                            <option value="gansu">甘肃省</option>
+                            <option value="qinghai">青海省</option>
+                            <option value="taiwan">台湾省</option>
+                            <option value="neimenggu">内蒙古自治区</option>
+                            <option value="guangxi">广西壮族自治区</option>
+                            <option value="xizang">西藏自治区</option>
+                            <option value="ningxia">宁夏回族自治区</option>
+                            <option value="xinjiang">新疆维吾尔自治区</option>
+                            <option value="beijing">北京市</option>
+                            <option value="tianjin">天津市</option>
+                            <option value="shanghai">上海市</option>
+                            <option value="chongqing">重庆市</option>
+                            <option value="xianggang">香港特别行政区</option>
+                            <option value="aomen">澳门特别行政区</option>
+                        </select>
+                    </div>
+                    <fieldset>
+                        <legend>图书兴趣</legend>
+                        <div class="interest-options">
+                            <label><input type="checkbox" name="interest" value="novel">小说</label>
+                            <label><input type="checkbox" name="interest" value="history">历史</label>
+                            <label><input type="checkbox" name="interest" value="science">科学</label>
+                            <label><input type="checkbox" name="interest" value="literature">文学</label>
+                            <label><input type="checkbox" name="interest" value="philosophy">哲学</label>
+                            <label><input type="checkbox" name="interest" value="politics">政治</label>
+                            <label><input type="checkbox" name="interest" value="biography">传记</label>
+                            <label><input type="checkbox" name="interest" value="economy">经济</label>
+                        </div>
+                    </fieldset>
+                    <div class="book-form-group">
+                        <label for="subComment"><i class="fa fa-pen"></i>订阅说明</label>
+                        <textarea id="subComment" name="comment" class="book-form-control" placeholder="请输入您的订阅需求或建议"></textarea>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="subAvatar"><i class="fa fa-image"></i>上传头像</label>
+                        <div class="file-upload">
+                            <input type="file" id="subAvatar" name="avatar" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="form-btn submit-btn">提交</button>
+                        <button type="reset" class="form-btn reset-btn">重置</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top">↑</a>
+    <div class="main-container">
+        <div class="banner">
+            <div class="banner-wrapper">
+                <img src="../image/6.png" alt="1">
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="left-sidebar">
+                <h3 class="category-title">图书分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">文学小说</a></li>
+                    <li><a href="#">历史传记</a></li>
+                    <li><a href="#">哲学宗教</a></li>
+                    <li><a href="#">社会科学</a></li>
+                    <li><a href="#">政治军事</a></li>
+                    <li><a href="#">法律</a></li>
+                    <li><a href="#">经济管理</a></li>
+                    <li><a href="#">金融投资</a></li>
+                    <li><a href="#">生活休闲</a></li>
+                    <li><a href="#">艺术摄影</a></li>
+                    <li><a href="#">科技科普</a></li>
+                    <li><a href="#">计算机</a></li>    
+                </ul>
+            </div>
+            <div class="middle-content">
+                <div class="section hot-books">
+                    <h3 class="section-title">热门推荐</h3>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book1/200/300" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>人类简史</h4>
+                                    <p>作者：尤瓦尔·赫拉利</p>
+                                    <p>价格：¥68.00</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">人类简史</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book2/300/400" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>解忧杂货店</h4>
+                                    <p>作者：东野圭吾</p>
+                                    <p>价格：¥45.00</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">解忧杂货店</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book3/200/300" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>三体</h4>
+                                    <p>作者：刘慈欣</p>
+                                    <p>价格：¥58.00</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">三体</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book4/200/300" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>活着</h4>
+                                    <p>作者：余华</p>
+                                    <p>价格：¥32.00</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">活着</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book5/200/300" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>追风筝的人</h4>
+                                    <p>作者：卡勒德·胡赛尼</p>
+                                    <p>价格：¥39.50</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">追风筝的人</div>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-img">
+                            <img src="https://picsum.photos/seed/book6/200/300" alt="图书封面">
+                            <div class="book-overlay">
+                                <div class="book-detail">
+                                    <h4>百年孤独</h4>
+                                    <p>作者：加西亚·马尔克斯</p>
+                                    <p>价格：¥55.00</p>
+                                    <button class="add-to-cart">加入购物车</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="book-title">百年孤独</div>
+                    </div>
+                </div>
+                <div class="section new-books">
+                    <h3 class="section-title">新书上市</h3>
+                    <table>
+                        <tr>
+                            <th>书名</th>
+                            <th>作者</th>
+                            <th>出版社</th>
+                            <th>价格</th>
+                            <th>操作</th>
+                        </tr>
+                        <tr>
+                            <td>秋分之夜</td>
+                            <td>林清玄</td>
+                            <td>北京联合出版公司</td>
+                            <td>¥42.00</td>
+                            <td><button class="add-to-cart">加入购物车</button></td>
+                        </tr>
+                        <tr>
+                            <td>时间的秩序</td>
+                            <td>卡洛·罗韦利</td>
+                            <td>湖南科学技术出版社</td>
+                            <td>¥49.00</td>
+                            <td><button class="add-to-cart">加入购物车</button></td>
+                        </tr>
+                        <tr>
+                            <td>置身事内</td>
+                            <td>兰小欢</td>
+                            <td>上海人民出版社</td>
+                            <td>¥59.00</td>
+                            <td><button class="add-to-cart">加入购物车</button></td>
+                        </tr>
+                        <tr>
+                            <td>夜晚的潜水艇</td>
+                            <td>陈春成</td>
+                            <td>上海三联书店</td>
+                            <td>¥52.00</td>
+                            <td><button class="add-to-cart">加入购物车</button></td>
+                        </tr>
+                        <tr>
+                            <td>云边有个小卖部</td>
+                            <td>张嘉佳</td>
+                            <td>湖南文艺出版社</td>
+                            <td>¥42.00</td>
+                            <td><button class="add-to-cart">加入购物车</button></td>
+                        </tr>
+                    </table>
+                    <div class="cart-fixed">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div class="cart-count">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <div class="promotion">
+                <h3 class="promotion-title">秋分特惠</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo1/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>精选图书</p>
+                    <p>限时折扣</p>
+                    <div class="promotion-price">5折起</div>
+                    <a href="#" class="promotion-btn">立即查看</a>
+                </div>
+            </div>
+            
+            <div class="promotion">
+                <h3 class="promotion-title">会员专享</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo2/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>新书抢先读</p>
+                    <p>会员8折优惠</p>
+                    <a href="#" class="promotion-btn">开通会员</a>
+                </div>
+            </div>
+            
+            <div class="promotion">
+                <h3 class="promotion-title">满减活动</h3>
+                <div class="promotion-img">
+                    <img src="https://picsum.photos/seed/promo3/400/300" alt="促销图片">
+                </div>
+                <div class="promotion-info">
+                    <p>满100减30</p>
+                    <p>满200减80</p>
+                    <a href="#" class="promotion-btn">了解详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <p>文学书苑&copy; 2025 版权所有</p>
+            <p>联系电话：123-456-7890 | 邮箱：nichousha@chounizadi.com</p>
+        </div>
+    </footer>
+    <script>
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 150) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalTriggers = document.querySelectorAll('.modal-trigger');
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            const closeButtons = document.querySelectorAll('.close-modal');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetModalId = this.getAttribute('data-target');
+                    const modal = document.getElementById(targetModalId);
+                    if (modal) {
+                        modal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            const modals = document.querySelectorAll('.login-modal, .book-form-modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            const showRegister = document.getElementById('showRegister');
+            const showLogin = document.getElementById('showLogin');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (showRegister && showLogin && loginForm && registerForm) {
+                showRegister.addEventListener('click', function() {
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                });
+
+                showLogin.addEventListener('click', function() {
+                    registerForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                });
+            }
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('username').value;
+                    alert(`登录成功！欢迎您，${username}`);
+                    const loginModal = document.getElementById('loginModal');
+                    if (loginModal) {
+                        loginModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const regUsername = document.getElementById('regUsername').value;
+                    alert(`注册成功！欢迎您，${regUsername}`);
+                    registerForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                });
+            }
+            const bookSubscriptionForm = document.getElementById('bookSubscriptionForm');
+            if (bookSubscriptionForm) {
+                bookSubscriptionForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const username = document.getElementById('subUsername').value;
+                    alert(`订阅成功！感谢您的参与，${username}！我们会尽快与您联系。`);
+                    const bookFormModal = document.getElementById('bookFormModal');
+                    if (bookFormModal) {
+                        bookFormModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                        bookSubscriptionForm.reset();
+                    }
+                });
+            }
+        });
+        window.addEventListener('load', function() {
+            const loadingMask = document.querySelector('.loading-mask');
+            if (loadingMask) loadingMask.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
